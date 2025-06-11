@@ -22,6 +22,16 @@ public class Tests {
 		
 		String[] PareiziAtbildi = {"4", "1", "4", "1", "3", "2", "3", "2", "2", "1"};
 		int[] seciba = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+		
+		int ParAtb = 0;
+		String nepareizi = "";
+		
+		for (int i = 0; i < seciba.length; i++) {
+            int j = (int)(Math.random() * seciba.length);
+            int a = seciba[i];
+            seciba[i] = seciba[j];
+            seciba[j] = a;
+        } 
 		 
 	}
 }
