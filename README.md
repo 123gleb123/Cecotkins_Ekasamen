@@ -43,6 +43,6 @@ Pēc testa pabeigšanas tiks attēlots:
 - ![image](https://github.com/user-attachments/assets/da8d8c0f-b0d2-4f32-b4ed-32dd6e72cbcb)
 
 ---
-
+Prezentacija Canvā - https://www.canva.com/design/DAGqCBFdfgw/dxgHaT100uZ_nxf2FBeO_Q/edit
 
 
