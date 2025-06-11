@@ -22,51 +22,73 @@ public class Tests {
 		
 		String[] PareiziAtbildi = {"4", "1", "4", "1", "3", "2", "3", "2", "2", "1"};
 		int[] seciba = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+		String[] darbibas = {"Taisīt testu", "Info", "Iziet"};
+		int izvelesindekss = 0;
 		
 		int ParAtb = 0;
 		String nepareizi = "";
-		
-		for (int i = 0; i < seciba.length; i++) {
-            int j = (int)(Math.random() * seciba.length);
-            int a = seciba[i];
-            seciba[i] = seciba[j];
-            seciba[j] = a;
-        }
-		
-		for (int i = 0; i < 10; i++) {
-            int q = seciba[i];
-            int start = q * 4;
+		String izvele;
+		do {
+			  izvele = (String) JOptionPane.showInputDialog(null, "Izvēlies darbību:", "Java Tests",
+	                    JOptionPane.QUESTION_MESSAGE, null, darbibas, darbibas[0]);
+	            if (izvele == null) {
+	                break;  // lietotājs nospieda Cancel vai aizvēra logu
+	            }
+	        switch (izvele) {
+			case "Taisīt testu":
+					for (int i = 0; i < seciba.length; i++) {
+			            int j = (int)(Math.random() * seciba.length);
+			            int a = seciba[i];
+			            seciba[i] = seciba[j];
+			            seciba[j] = a;
+			        }
+					
+					for (int i = 0; i < 10; i++) {
+			            int q = seciba[i];
+			            int start = q * 4;
 
-            String msg = (i + 1) + ". " + Jautajumi[q] + "\n";
-            for (int j = 0; j < 4; j++) {
-                msg += (j + 1) + ") " + AtbilzhuVar[start + j] + "\n";
-            }
-            
-            String input = JOptionPane.showInputDialog(msg + "\nIevadi pareizos atbilžu numurus (piemēram: 1):");
+			            String msg = (i + 1) + ". " + Jautajumi[q] + "\n";
+			            for (int j = 0; j < 4; j++) {
+			                msg += (j + 1) + ") " + AtbilzhuVar[start + j] + "\n";
+			            }
+			            
+			            String input = JOptionPane.showInputDialog(msg + "\nIevadi pareizos atbilžu numurus (piemēram: 1):");
 
-            if (input != null) {
-                input = input.trim().replaceAll("\\s+", " ");
-                if (input.equals(PareiziAtbildi[q])) {
-                	ParAtb++;
-                } else {
-                	nepareizi += (i + 1) + ") " + Jautajumi[q] + "\n";
-                	nepareizi += "Pareizā atbilde: " + AtbilzhuVar[q] + "\n\n";
-                }
-            }
-        }
-		
-		double procenti = (ParAtb * 100) / 10;
+			            if (input != null) {
+			                input = input.trim().replaceAll("\\s+", " ");
+			                if (input.equals(PareiziAtbildi[q])) {
+			                	ParAtb++;
+			                } else {
+			                	nepareizi += (i + 1) + ") " + Jautajumi[q] + "\n";
+			                	nepareizi += "Pareizā atbilde: " + AtbilzhuVar[q] + "\n\n";
+			                }
+			            }
+			        }
+					
+					double procenti = (ParAtb * 100) / 10;
 
-		String result = "Pareizi: " + ParAtb + " no " + "10" + "\n";
-		result += "Procentuāli: " + procenti + "%\n";
-		
-        if (ParAtb < 10) {
-            result += "\nNepareizi atbildētie jautājumi:\n\n" + nepareizi;
-        } else {
-            result += "\nVisi jautājumi atbildēti pareizi!";
-        }
+					String result = "Pareizi: " + ParAtb + " no " + "10" + "\n";
+					result += "Procentuāli: " + procenti + "%\n";
+					
+			        if (ParAtb < 10) {
+			            result += "\nNepareizi atbildētie jautājumi:\n\n" + nepareizi;
+			        } else {
+			            result += "\nVisi jautājumi atbildēti pareizi!";
+			        }
 
-        JOptionPane.showMessageDialog(null, result);
-		 
+			        JOptionPane.showMessageDialog(null, result);
+			        break;
+			case "Info":
+				JOptionPane.showMessageDialog(null,
+					    "Šis tests pārbauda zināšanas par viendimensiju masīviem Java valodā.\n" +
+					    "Katram jautājumam ir 4 atbildes, no kurām 2 vai 3 ir pareizas.\n" +
+					    "Jautājumu secība tiek sajaukta. Rezultāti tiks rādīti testa beigās."
+					);
+				break;
+			case "Iziet":
+				JOptionPane.showMessageDialog(null, "Uz redzēšanos, jauku dienu!");
+				break;
+			}
+		}while(!izvele.equals("Iziet"));
 	}
 }
