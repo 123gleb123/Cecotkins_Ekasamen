@@ -5,7 +5,6 @@ public class uzd2 {
 		int[] numbers = new int[7];
         int sum = 0;
         Scanner scanner = new Scanner(System.in);
-        
       //Ievade
         for (int i = 0; i < numbers.length; i++) {
             System.out.print("Ievadiet skaitli " + (i + 1) + ": ");
