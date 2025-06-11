@@ -31,7 +31,42 @@ public class Tests {
             int a = seciba[i];
             seciba[i] = seciba[j];
             seciba[j] = a;
-        } 
+        }
+		
+		for (int i = 0; i < 10; i++) {
+            int q = seciba[i];
+            int start = q * 4;
+
+            String msg = (i + 1) + ". " + Jautajumi[q] + "\n";
+            for (int j = 0; j < 4; j++) {
+                msg += (j + 1) + ") " + AtbilzhuVar[start + j] + "\n";
+            }
+            
+            String input = JOptionPane.showInputDialog(msg + "\nIevadi pareizos atbilžu numurus (piemēram: 1):");
+
+            if (input != null) {
+                input = input.trim().replaceAll("\\s+", " ");
+                if (input.equals(PareiziAtbildi[q])) {
+                	ParAtb++;
+                } else {
+                	nepareizi += (i + 1) + ") " + Jautajumi[q] + "\n";
+                	nepareizi += "Pareizā atbilde: " + AtbilzhuVar[q] + "\n\n";
+                }
+            }
+        }
+		
+		double procenti = (ParAtb * 100) / 10;
+
+		String result = "Pareizi: " + ParAtb + " no " + "10" + "\n";
+		result += "Procentuāli: " + procenti + "%\n";
+		
+        if (ParAtb < 10) {
+            result += "\nNepareizi atbildētie jautājumi:\n\n" + nepareizi;
+        } else {
+            result += "\nVisi jautājumi atbildēti pareizi!";
+        }
+
+        JOptionPane.showMessageDialog(null, result);
 		 
 	}
 }
